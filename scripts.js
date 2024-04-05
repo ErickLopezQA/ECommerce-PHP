@@ -17,29 +17,3 @@ function addProducto(id, token) {
             }
         })
 }
-//Funcion de el boton de PayPal...
-paypal.Buttons({
-    style:{
-        color: 'blue',
-        shape: 'pill',
-        laber: 'pay'
-    },
-    createOrder: function(data, actions) {
-        return actions.order.create({
-            purchase_units: [{
-                amount: {
-                    value: 20000
-                }
-            }]
-        });
-    },
-    onApprove: function(data, actions) {
-        actions.order.capture().then(function (detalles) {
-            console.log(detalles);
-        });
-    },
-    onCancel: function(data){
-        alert('El pago ha sido cancelado');
-        console.log(data);
-    }
-}).render('#paypal-button-container');

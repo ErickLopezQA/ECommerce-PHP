@@ -38,11 +38,14 @@ if ($productos != null) {
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-
+    <!-- link js -->
+    <script src="scripts.js"></script>
+    <!-- PayPal Function -->
+    <script src="https://www.paypal.com/sdk/js?client-id=AYliHVGBUYvuu3fORQ3MHli5hEmySaPwGb7Wqbp-BC4l2Cc6sikvsdZCuLJtJgsMCFAUFWdNZlzzqvSq&currency=MXN"></script>
     <!-- styles -->
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <!-- HEADER -->
     <header>
@@ -76,9 +79,9 @@ if ($productos != null) {
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>Producto</th>
-                                        <th>Subtotal</th>
-                                        <th></th>
+                                        <th class="table-content">Producto</th>
+                                        <th class="table-content">Subtotal</th>
+                                        <th class="table-content"></th>
                                     </tr>
                                 </thead>
                                 <?php if ($lista_carrito == null){
@@ -119,10 +122,34 @@ if ($productos != null) {
 
     </section>
 
-    <!-- link js -->
-    <script src="scripts.js"></script>
-    <!-- PayPal Function -->
-    <script src="https://www.paypal.com/sdk/js?client-id=AYliHVGBUYvuu3fORQ3MHli5hEmySaPwGb7Wqbp-BC4l2Cc6sikvsdZCuLJtJgsMCFAUFWdNZlzzqvSq&currency=MXN"></script>
-
+    <!-- SCRIPT PARA QUE FUNCIONEN LOS BOTONES DE PAYPAL CORRECTAMENTE -->
+    <script>
+            paypal.Buttons({
+                style:{
+                    color: 'blue',
+                    shape: 'pill',
+                    laber: 'pay'
+                },
+                createOrder: function(data, actions) {
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: {
+                                value: 20000
+                            }
+                        }]
+                    });
+                },
+                onApprove: function(data, actions) {
+                    actions.order.capture().then(function (detalles) {
+                        console.log(detalles);
+                    });
+                },
+                onCancel: function(data){
+                    alert('El pago ha sido cancelado');
+                    console.log(data);
+                }
+            }).render('#paypal-button-container');
+        </script>    
+                             
 </body>
 </html>

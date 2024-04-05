@@ -143,8 +143,8 @@ if($id == '' || $token == ''){
                 </p>
 
                     <div class="d-grid gap-3 col-10 mx-auto"><br><br>
-                        <button class="btn btn-primary productbtn styleaddcartproduct">Comprar Ahora!</button>
-                        <button class="btn btn-outline-primary productbtn" onclick="addProducto(<?php echo $id; ?>, '<?php echo $token_tmp; ?>')" >Añadir Al Carrito</button>
+                        <button class="btn btn-primary productbtn">Comprar Ahora!</button>
+                        <button class="btn btn-outline-primary productbtn add-cart" onclick="addProducto(<?php echo $id; ?>, '<?php echo $token_tmp; ?>')" >Añadir Al Carrito</button>
                     </div>
             </div>
         </div>
