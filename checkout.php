@@ -93,7 +93,7 @@ if ($productos != null) {
                                 <td> <?php echo $nombre; ?> </td>
                                 <td> <?php echo MONEDA . number_format($precio_desc,2, '.', ','); ?> </td>
                                 <td> 
-                                    <input type="number" min="1" max="10" step="1" value" <?php echo $cantidad ?>" size ="5" id="cantidad_<?php echo $_id; ?>" onchange="" >
+                                    <input type="number" min="1" max="10" step="1" value="<?php echo $cantidad ?>" size ="5" id="cantidad_<?php echo $_id; ?>" onchange="" >
                                 </td>
                                 <td>
                                 <div id="subtotal_<?php echo $_id; ?>" name="subtotal[]"><?php echo MONEDA . number_format($precio_desc,2, '.', ','); ?></div>    
