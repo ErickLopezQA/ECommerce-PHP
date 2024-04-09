@@ -65,7 +65,7 @@ if ($productos != null) {
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
-                            <tr>
+                            <tr class="whitetext">
                                 <th>Producto</th>
                                 <th>Precio</th>
                                 <th>Cantidad</th>
@@ -73,9 +73,9 @@ if ($productos != null) {
                                 <th></th>
                             </tr>
                         </thead>
-
+                        <tbody>
                             <?php if ($lista_carrito == null){
-                                echo '<tr><td colspan="5 class="text-center"><b>Lista vacia</b>"></td></tr>';
+                                echo '<tr><td colspan="5 class="text-center whitetext"><b>Lista vacia</b>"></td></tr>';
                             } else {
                                 $total = 0;
                                 foreach($lista_carrito as $producto){
@@ -89,24 +89,22 @@ if ($productos != null) {
                                     $total += $subtotal;
                                     ?>
                                 
-                            <tr>
-                                <td> <?php echo $nombre; ?> </td>
-                                <td> <?php echo MONEDA . number_format($precio_desc,2, '.', ','); ?> </td>
+                            <tr class="whitetext">
+                                <td> <?php echo $nombre; ?> </td> <!-- Producto -->
+                                <td> <?php echo MONEDA . number_format($precio_desc,2, '.', ','); ?> </td> <!-- Precio -->
                                 <td> 
-                                    <input type="number" min="1" max="10" step="1" value="<?php echo $cantidad ?>" size ="5" id="cantidad_<?php echo $_id; ?>" onchange="" >
-                                </td>
+                                    <input type="number" min="1" max="100" step="1" value="<?php echo $cantidad ?>" size ="5" id="cantidad_<?php echo $_id; ?>" onchange="actualizaCantidad(this.value, <?php echo $_id; ?>)"     >
+                                </td> <!-- Cantidad -->
                                 <td>
-                                <div id="subtotal_<?php echo $_id; ?>" name="subtotal[]"><?php echo MONEDA . number_format($precio_desc,2, '.', ','); ?></div>    
-                                </td>
-                                <td><a href="#" id="eliminar" class=btn btn-warning btn-sm data-bs-id="<?php echo $_id; ?>" data-ds-toogle="modal" data-bs-targets="eliminaModal">Eliminar</a></td>
+                                <div id="subtotal_<?php echo $_id; ?>" name="subtotal[]"><?php echo MONEDA . number_format($subtotal,2, '.', ','); ?></div> <!-- Subtotal -->    
+                                </td> 
+                                <td><a href="#" id="eliminar" class="btn btn-danger btn-sm" data-bs-id="<?php echo $_id;?>" data-ds-toogle="modal" data-bs-targets="eliminaModal">Eliminar</a></td> <!-- Btn eliminar -->
                             </tr>
                             <?php }?>
-                            <tr>
-                                <td colspan="3">
-                                    <td colspan="2">
-                                        <p class="h3" id="total"> Total: <?php echo MONEDA . number_format($total, 2, '.', ','); ?> </p>
+                            <tr>  
+                                    <td colspan="5">
+                                        <p class="h3 text-end" id="total"> Total: <?php echo MONEDA . number_format($total, 2, '.', ','); ?> </p>
                                     </td>
-                                </td>
                             </tr>
 
 

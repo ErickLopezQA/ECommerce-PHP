@@ -78,7 +78,7 @@ if ($productos != null) {
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>
-                                    <tr>
+                                    <tr class="whitetext">
                                         <th class="table-content">Producto</th>
                                         <th class="table-content">Subtotal</th>
                                         <th class="table-content"></th>
@@ -98,7 +98,7 @@ if ($productos != null) {
                                         $subtotal = $cantidad * $precio_desc;
                                         $total += $subtotal;
                                         ?>
-                                <tr>
+                                <tr class="whitetext">
                                     <td> <?php echo $nombre; ?> </td>
                                     <td>
                                     <div id="subtotal_<?php echo $_id; ?>" name="subtotal[]"><?php echo MONEDA . number_format($precio_desc,2, '.', ','); ?></div>    

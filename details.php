@@ -126,7 +126,7 @@ if($id == '' || $token == ''){
                 <h1 class="product-title"> <?php echo $nombre ?> </h1>
 
                             <?php if($descuento > 0) { ?>
-                                <p class="text-danger" ><del> <?php echo MONEDA . number_format($precio, 2, '.', ',' ); ?> </del></p>
+                                <p class="text-danger"><del><?php echo MONEDA . number_format($precio, 2, '.', ',' ); ?></del></p>
                                 <h2>
                                     <?php echo MONEDA . number_format($precio_desc, 2, '.', ',' ); ?>
                                     <small class="text-success"> <?php echo $descuento; ?>% descuento. </small>
